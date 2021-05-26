@@ -1,18 +1,22 @@
 package com.orgsystem.orgreserva.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.Instant;
 import java.util.Date;
 
-public class Sala extends Agenda{
+@Entity
+public class Sala{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
 
     public Sala(){}
 
-    public Sala(Date dataAgendamento, Instant instanteInicial, Instant instanteFinal, String nome) {
-        super(dataAgendamento, instanteInicial, instanteFinal);
-        this.nome = nome;
-    }
 
     public String getNome() {
         return nome;

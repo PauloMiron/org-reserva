@@ -1,19 +1,25 @@
 package com.orgsystem.orgreserva.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.Instant;
 import java.util.Date;
 
 @Entity
-public class Agenda {
+public class Agendamento {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private Date dataAgendamento;
     private Instant InstanteInicial;
     private Instant InstanteFinal;
 
-    public Agenda (){ }
+    public Agendamento(){ }
 
-    public Agenda(Date dataAgendamento, Instant instanteInicial, Instant instanteFinal) {
+    public Agendamento(Date dataAgendamento, Instant instanteInicial, Instant instanteFinal) {
         this.dataAgendamento = dataAgendamento;
         InstanteInicial = instanteInicial;
         InstanteFinal = instanteFinal;

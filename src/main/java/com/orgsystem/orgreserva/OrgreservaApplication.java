@@ -8,9 +8,6 @@ public class OrgreservaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OrgreservaApplication.class, args);
-
-		System.out.println('\n');
-		System.out.println("Hello wolrd");
 	}
 
 

@@ -1,19 +1,21 @@
 package com.orgsystem.orgreserva.entities;
 
-import java.time.Instant;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public class Carro extends Agenda {
+@Entity
+public class Carro {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
 
 
     public Carro(){}
 
-    public Carro(Date dataAgendamento, Instant instanteInicial, Instant instanteFinal, String nome) {
-        super(dataAgendamento, instanteInicial, instanteFinal);
-        this.nome = nome;
-    }
 
     public String getNome() {
         return nome;
