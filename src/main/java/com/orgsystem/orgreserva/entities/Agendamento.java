@@ -1,28 +1,31 @@
 package com.orgsystem.orgreserva.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.time.Instant;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Agendamento {
+public class Agendamento implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date dataAgendamento;
-    private Instant InstanteInicial;
-    private Instant InstanteFinal;
+    private Date dataInicial;
+    private Date dataFinal;
 
-    public Agendamento(){ }
+    @OneToOne
+    private Objeto objeto;
 
-    public Agendamento(Date dataAgendamento, Instant instanteInicial, Instant instanteFinal) {
+    public Agendamento() {
+    }
+
+    public Agendamento(Long id, Date dataAgendamento, Date dataInicial, Date dataFinal, Objeto objeto) {
+        this.id = id;
         this.dataAgendamento = dataAgendamento;
-        InstanteInicial = instanteInicial;
-        InstanteFinal = instanteFinal;
+        this.dataInicial = dataInicial;
+        this.dataFinal = dataFinal;
+        this.objeto = objeto;
     }
 
     public Date getDataAgendamento() {
@@ -33,19 +36,36 @@ public class Agendamento {
         this.dataAgendamento = dataAgendamento;
     }
 
-    public Instant getInstanteInicial() {
-        return InstanteInicial;
+    public Date getDataInicial() {
+        return dataInicial;
     }
 
-    public void setInstanteInicial(Instant instanteInicial) {
-        InstanteInicial = instanteInicial;
+    public void setDataInicial(Date dataInicial) {
+        this.dataInicial = dataInicial;
     }
 
-    public Instant getInstanteFinal() {
-        return InstanteFinal;
+    public Date getDataFinal() {
+        return dataFinal;
     }
 
-    public void setInstanteFinal(Instant instanteFinal) {
-        InstanteFinal = instanteFinal;
+    public void setDataFinal(Date dataFinal) {
+        this.dataFinal = dataFinal;
+    }
+
+    public Objeto getObjeto() {
+        return objeto;
+    }
+
+    public void setObjeto(Objeto objeto) {
+        this.objeto = objeto;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
+
