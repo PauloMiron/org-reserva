@@ -16,6 +16,11 @@ public class ObjetoResource {
     @Autowired
     private ObjetoService objetoService;
 
+    @GetMapping(value="{id}")
+    public ResponseEntity<Objeto> findById(@PathVariable Long id){
+        Objeto obj = objetoService.findById(id);
+        return ResponseEntity.ok().body(obj);
+    }
 
     @PostMapping
     public ResponseEntity<Objeto> insert(@RequestBody Objeto objeto) {

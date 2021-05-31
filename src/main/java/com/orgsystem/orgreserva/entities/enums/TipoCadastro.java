@@ -16,9 +16,15 @@ public enum TipoCadastro {
             return cod;
         }
 
-        public String getDescricao() {
-            return descricao;
+
+    public static TipoCadastro toEnum(int cod){
+        for (TipoCadastro x : TipoCadastro.values()){
+            if (x.getCod() == cod){
+                return x;
+            }
         }
+        throw new IllegalArgumentException("Código Invalido");
+    }
 
     }
 

@@ -22,7 +22,7 @@ public class ObjetoService {
     public Objeto findById(Long id){
         Optional<Objeto> obj = objetoRepository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException(
-                "Pauta não encontrado! Id: " + id + ", Tipo: " + Objeto.class.getName()));
+                "Objeto não encontrado! Id: " + id + ", Tipo: " + Objeto.class.getName()));
     }
 
     public Objeto update(Long id,Objeto obj){
@@ -51,7 +51,7 @@ public class ObjetoService {
         }catch (EmptyResultDataAccessException e){
             throw new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Objeto.class.getName());
         }catch (DataIntegrityViolationException e){
-            throw new DatabaseExceptions("Não é possível excluir uma categoria que possui produtos");
+            throw new DatabaseExceptions("Não é possível excluir um Objeto que possui Agendamento");
         }
     }
 }

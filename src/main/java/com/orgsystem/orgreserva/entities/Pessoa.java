@@ -1,9 +1,11 @@
 package com.orgsystem.orgreserva.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.orgsystem.orgreserva.entities.enums.Perfil;
+import com.orgsystem.orgreserva.entities.enums.TipoCadastro;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Pessoa {
@@ -15,13 +17,18 @@ public class Pessoa {
     private String email;
     private String senha;
 
-    public Pessoa (){}
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "PERFIS")
+    private Set<Integer> perfis = new HashSet<>();
 
-    public Pessoa(Long id,String nome,String email,String senha){
+    public Pessoa (){addPerfil(Perfil.CLIENTE);}
+
+    public Pessoa(Long id, String nome, String email, String senha){
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        addPerfil(Perfil.CLIENTE);
     }
 
 
@@ -55,5 +62,9 @@ public class Pessoa {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public void addPerfil(Perfil perfil){
+        perfis.add(perfil.getCod());
     }
 }
